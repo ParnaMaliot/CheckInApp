@@ -23,7 +23,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var checkIn = [CheckIn]()
     var pickedImage: UIImage?
     let locationManager = CLLocationManager()
-   // var user: User?
     var moment = CheckIn()
     var filterCheckIns = [CheckIn]()
     
@@ -35,6 +34,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CheckInCollectionViewCell", for: indexPath) as! CheckInCollectionViewCell
         let displayedCell = filterCheckIns[indexPath.row]
         guard let user = DataStore.shared.localUser else {return cell}
+        moment.name = user.name
         cell.setupCell(feedItem: displayedCell, user: user)
         return cell
     }
@@ -237,12 +237,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "FullImageViewController") as! FullImageViewController
         fetchFeedItems()
+        guard let userName = moment.name else {return}
+        controller.transfer = image
+        controller.userName = userName
         controller.image = transfredImage
-       // controller.user = image.name ?? "zezancija"
-        controller.lat = image.latitude ?? "test"
-        controller.long = image.longtitude ?? "test"
-        controller.created = moment.createdAt ?? 2.00
-        controller.loc = image.location ?? "test"
         controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }

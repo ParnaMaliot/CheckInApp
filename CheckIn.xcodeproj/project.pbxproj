@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CD028FFC25B3B5A500453AB5 /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD028FFB25B3B5A500453AB5 /* FullImageViewController.swift */; };
-		CD1ACD8325B5EFB600A8E588 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ACD8225B5EFB600A8E588 /* SearchBar.swift */; };
 		CD61AE8725ACAEB8006BF330 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD61AE8625ACAEB8006BF330 /* DataStore.swift */; };
 		CD61AEB125ACB034006BF330 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD61AEB025ACB034006BF330 /* User.swift */; };
 		CD61AECA25ACBD47006BF330 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD61AEC925ACBD47006BF330 /* LogInViewController.swift */; };
@@ -37,7 +36,6 @@
 /* Begin PBXFileReference section */
 		749164D6B895199399787A76 /* Pods-CheckIn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckIn.release.xcconfig"; path = "Target Support Files/Pods-CheckIn/Pods-CheckIn.release.xcconfig"; sourceTree = "<group>"; };
 		CD028FFB25B3B5A500453AB5 /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
-		CD1ACD8225B5EFB600A8E588 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CD61AE8625ACAEB8006BF330 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		CD61AEB025ACB034006BF330 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CD61AEC925ACBD47006BF330 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 				CD61AECC25ACBD54006BF330 /* RegisterViewController.swift */,
 				CD61AECF25ACBDB5006BF330 /* HomeViewController.swift */,
 				CD028FFB25B3B5A500453AB5 /* FullImageViewController.swift */,
-				CD1ACD8225B5EFB600A8E588 /* SearchBar.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -292,7 +289,6 @@
 			files = (
 				CD769E1B25AB640F00682490 /* WelcomeViewController.swift in Sources */,
 				CD61AEE025ACFA6D006BF330 /* CheckIn.swift in Sources */,
-				CD1ACD8325B5EFB600A8E588 /* SearchBar.swift in Sources */,
 				CD61AE8725ACAEB8006BF330 /* DataStore.swift in Sources */,
 				CD61AECD25ACBD54006BF330 /* RegisterViewController.swift in Sources */,
 				CD61AED025ACBDB5006BF330 /* HomeViewController.swift in Sources */,

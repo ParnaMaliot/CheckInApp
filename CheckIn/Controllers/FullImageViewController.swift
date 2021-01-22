@@ -19,22 +19,26 @@ class FullImageViewController: UIViewController {
     @IBOutlet weak var createdAt: UILabel!
     
     var image: UIImage?
-    var loc = ""
-    var long = ""
-    var lat = ""
     var created = TimeInterval()
-   // var user = ""
-    var test = ""
+    var transfer = CheckIn()
+    var userName = ""
 
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         mapImage.image = image
-        name.text = test
-        location.text = "Location: " + "\(loc)"
-        latitude.text = "Latitude: " + "\(lat)"
-        longtitude.text = "Longitude: " + "\(long)"
-        createdAt.text = "\(created)"
+        name.text = userName
+        location.text = "Location: " + transfer.location!
+        latitude.text = "Latitude: " + transfer.latitude!
+        longtitude.text = "Longitude: " + transfer.longtitude!
+        setDate(feedItem: transfer)
     }
+    
+    func setDate(feedItem: CheckIn) {
+        guard let time = transfer.createdAt else {return}
+        let date = Date(with: time)
+        createdAt.text = date?.timeAgoDisplay()
+    }
+
 }
