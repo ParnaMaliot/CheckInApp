@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>443217399669-4c9hgd3bj791r3vofoa7btkjhe82shgo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.443217399669-4c9hgd3bj791r3vofoa7btkjhe82shgo</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBKjdINB0qMbv6ZEE-dlI3w2sBx4J748e0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>443217399669</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.maliotparna.checkin.CheckIn</string>
+	<key>PROJECT_ID</key>
+	<string>checkin-93ab7</string>
+	<key>STORAGE_BUCKET</key>
+	<string>checkin-93ab7.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>DATABASE_URL</key>
+	<string>https://checkin-93ab7-default-rtdb.europe-west1.firebasedatabase.app/</string>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:443217399669:ios:6d652859cdfe25298a8d3c</string>
+</dict>
+</plist>
