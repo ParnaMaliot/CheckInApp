@@ -34,7 +34,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CheckInCollectionViewCell", for: indexPath) as! CheckInCollectionViewCell
         let displayedCell = filterCheckIns[indexPath.row]
         guard let user = DataStore.shared.localUser else {return cell}
-        moment.name = user.name
         cell.setupCell(feedItem: displayedCell, user: user)
         return cell
     }
@@ -48,7 +47,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         mapView.isHidden = true
-        //registerForKeyboardNotifications()
+        registerForKeyboardNotifications()
         searchBar.delegate = self
     }
     
@@ -61,7 +60,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView.delegate = self
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 200)
-            layout.estimatedItemSize = CGSize(width: collectionView.frame.width, height: 200)
+            layout.estimatedItemSize = CGSize(width: collectionView.frame.width, height: 375)
         }
     }
     
@@ -195,6 +194,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             localUser.latitude = self.moment.latitude
             localUser.longtitude = self.moment.longtitude
         }
+        
+        moment.name = localUser.name
         self.checkIn.append(self.moment)
 
     }
@@ -237,9 +238,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "FullImageViewController") as! FullImageViewController
         fetchFeedItems()
-        guard let userName = moment.name else {return}
         controller.transfer = image
-        controller.userName = userName
+        controller.userName = image.name ?? "test"
         controller.image = transfredImage
         controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
@@ -283,7 +283,5 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
-    
-    
 }
 

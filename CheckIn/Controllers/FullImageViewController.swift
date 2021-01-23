@@ -25,15 +25,13 @@ class FullImageViewController: UIViewController {
 
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         mapImage.image = image
-        name.text = userName
+        name.text = "Name: " + userName
         location.text = "Location: " + transfer.location!
         latitude.text = "Latitude: " + transfer.latitude!
         longtitude.text = "Longitude: " + transfer.longtitude!
-        setDate(feedItem: transfer)
-    }
+        setDate(feedItem: transfer)    }
     
     func setDate(feedItem: CheckIn) {
         guard let time = transfer.createdAt else {return}
@@ -41,4 +39,5 @@ class FullImageViewController: UIViewController {
         createdAt.text = date?.timeAgoDisplay()
     }
 
+    
 }
