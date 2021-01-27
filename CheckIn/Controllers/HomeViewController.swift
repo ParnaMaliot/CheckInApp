@@ -161,8 +161,52 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     pinImage?.draw(at: point)
                 }
             }
-            self.pickedImage = image
+            self.uploadImage(image: image)
+//            self.pickedImage = image
         }
+    }
+    
+    func uploadImage(image: UIImage) {
+        guard var localUser = DataStore.shared.localUser else {
+            return
+        }
+
+        SVProgressHUD.show()
+        let uuid = UUID().uuidString
+        DataStore.shared.uploadImage(image: image, itemId: uuid, isUserImage: false) { (url, error) in
+            if let error = error {
+                SVProgressHUD.dismiss()
+                print(error.localizedDescription)
+                self.showErrorWith(title: "Error", msg: error.localizedDescription)
+                return
+            }
+            if let url = url {
+                self.moment.imageUrl = url.absoluteString
+                DataStore.shared.createFeedItem(item: self.moment) { (feed, error) in
+                    SVProgressHUD.dismiss()
+                    if let error = error {
+                        self.showErrorWith(title: "Error", msg: error.localizedDescription)
+                        return
+                    }
+                }
+                return
+            }
+            SVProgressHUD.dismiss()
+        }
+        localUser.save { (_, _) in
+            localUser.id = self.moment.creatorId
+            localUser.name = self.moment.name
+            self.moment.createdAt = Date().toMiliseconds()
+            localUser.location = self.moment.location
+            localUser.latitude = self.moment.latitude
+            localUser.longtitude = self.moment.longtitude
+        }
+        
+        moment.name = localUser.name
+        moment.creatorId = localUser.id
+        self.checkIn.append(self.moment)
+
+    
     }
 
     
@@ -172,7 +216,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
-
+        return
         guard var localUser = DataStore.shared.localUser else {
             return
         }
