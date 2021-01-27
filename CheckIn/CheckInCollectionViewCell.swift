@@ -47,10 +47,10 @@ class CheckInCollectionViewCell: UICollectionViewCell {
     }
     
     func fetchCreatorDetails(user: User, feedItem: CheckIn) {
-        guard let creatorId = user.id else { return }
-        DataStore.shared.getUser(uid: creatorId) { (user, error) in
+        guard let userId = user.id else { return }
+        DataStore.shared.getUser(uid: userId) { (user, error) in
             if let user = user {
-                self.nameLabel.text = "Name: " + "\(String(user.name!))"
+                self.nameLabel.text = "Name: " + "\(String(feedItem.name!))"
                 self.latitudeLabel.text = "Latitude: " + "\(String(feedItem.latitude!))"
                 self.longitudeLabel.text = "Longitude: " + String(feedItem.longtitude!)
                 self.locationLabel.text = "Location: " + String(feedItem.location!)

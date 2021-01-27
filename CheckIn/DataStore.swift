@@ -126,4 +126,24 @@ class DataStore {
             print(error.localizedDescription)
         }
     }
+    
+    func getAllUsers(completion: @escaping (_ users: [User]?,_ error: Error?) -> Void) {
+        let usersRef = database.collection("users")
+        
+        usersRef.getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            if let snapshot = snapshot {
+                do {
+                    let users = try snapshot.documents.compactMap({ try $0.data(as: User.self) })
+                    completion(users, nil)
+                } catch (let error) {
+                    completion(nil, error)
+                }
+            }
+        }
+    }
 }

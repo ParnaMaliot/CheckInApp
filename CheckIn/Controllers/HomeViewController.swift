@@ -96,7 +96,22 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return oneDate > twoDate
         }
         self.filterCheckIns = self.checkIn
+       // reloadFeedNotification(feedItem: moment)
         collectionView.reloadData()
+    }
+    
+    func reloadFeedNotification(feedItem: CheckIn) {
+        //guard let localUser = DataStore.shared.localUser, let usersId = localUser.id else { return }
+        DataStore.shared.getAllUsers { (users, error) in
+            if let users = users {
+                for user in users {
+                    self.filterCheckIns = self.filterCheckIns.filter({$0.creatorId == user.id})
+            }
+            }
+            self.collectionView.reloadData()
+        }
+        //guard let creatorId = moment.creatorId else { return }
+        //filterCheckIns = filterCheckIns.filter({$0.creatorId == usersId})
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -196,6 +211,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
         moment.name = localUser.name
+        moment.creatorId = localUser.id
         self.checkIn.append(self.moment)
 
     }
@@ -258,7 +274,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             return
         }
         let text = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-        filterCheckIns = checkIn.filter({($0.location?.lowercased().contains(text.lowercased()) ?? false)})
+        filterCheckIns = checkIn.filter({($0.name?.lowercased().contains(text.lowercased()) ?? false)})
         collectionView.reloadData()
     }
 
